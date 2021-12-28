@@ -12,5 +12,4 @@
 ##### cd pikaur
 ##### makepkg -sri
 ##### pikaur -Syu
-##### pikaur -S i3-gaps polybar i3-lock sakura
-
+##### pikaur -S i3-gaps polybar i3-lock sakura dmenu kate pcmanfm blueman sxhkd setxkbmap nitrogen dunst imwheel udiskie maim xclip ttf-font-awesome ttf-iosevka-nerd ttf-weather-icons lxappearance plasma-systemmonitor pavucontrol
