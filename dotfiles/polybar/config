@@ -61,7 +61,7 @@ font-3 = FontAwesome5Brands:style=Solid:size=7.5;2.5
 
 modules-left = bspwm i3 menu updates title
 modules-center = popup-calendar weather
-modules-right = now-playing cpu memory volume xkeyboard powermenu
+modules-right = now-playing cpu memory volume dsbattery xkeyboard powermenu
 
 tray-position = right
 tray-padding = 2
@@ -134,8 +134,7 @@ exec = ~/.config/polybar/scripts/popup-calendar.sh
 interval = 5
 click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup &
 
-#Этот модуль показывает заголовок текущего окна.
-#https://github.com/polybar/polybar/wiki/Module:-xwindow
+#Заголовок текущего окна.
 [module/title]
 type = internal/xwindow
 format = <label>
@@ -168,6 +167,21 @@ interval = 600
 type = custom/script
 exec = LC_NUMERIC="en_US.UTF-8" printf " %.2f\n" $(curl -s rub.rate.sx/1USD)
 interval = 6
+
+#Модуль, который показывает уровень заряда подключенного геймпада (для того,чтобы узнать id необходимо прописать upower -d, и вставить нужное вместо "gaming_input_ps_controller_battery_a0oabo51o89o94o65"
+[module/dsbattery]
+type = custom/script
+exec = echo $(upower -i /org/freedesktop/UPower/devices/gaming_input_ps_controller_battery_a0oabo51o89o94o65 | awk '/percent/ && !/0%/ {print" ᠌ ᠌"$2}')
+interval = 1
+label = %output%
+
+[module/cava]
+type = custom/script
+tail = true
+exec = ~/.config/polybar/scripts/polybar-cava.sh
+format = <label>
+format-font = 5
+label = %output%
 
 [module/xwindow]
 type = internal/xwindow
