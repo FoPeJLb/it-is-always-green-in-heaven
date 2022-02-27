@@ -1,0 +1,14 @@
+Print
+ maim | xclip -selection clipboard -t image/png && \\
+ play -q /usr/share/sounds/freedesktop/stereo/screen-capture.oga
+
+alt + Print
+ maim -i $(xdotool getactivewindow) | \\
+ xclip -selection clipboard -t image/png && \\
+ play -q /usr/share/sounds/freedesktop/stereo/screen-capture.oga
+
+control + alt + Print
+ maim --select | \\
+ xclip -selection clipboard -t image/png && \\
+ play -q /usr/share/sounds/freedesktop/stereo/screen-capture.oga
+
