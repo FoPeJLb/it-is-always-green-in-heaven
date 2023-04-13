@@ -54,14 +54,16 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Iosevka Nerd Font:style=Medium:size=8;3
+#font-0 = Iosevka Nerd Font:style=Medium:size=8;3
+font-0 = Hack Nerd Font:style=Medium:size=8;3
 font-1 = FontAwesome5Free:style=Solid:size=7.5;2.5
 font-2 = Weather Icons:size=7;2
 font-3 = FontAwesome5Brands:style=Solid:size=7.5;2.5
+font-4 = Material Icons:style=Solid:size=7.5;2.5
 
 modules-left = bspwm i3 menu updates title
-modules-center = popup-calendar weather
-modules-right = now-playing cpu memory volume dsbattery xkeyboard powermenu
+modules-center = cava popup-calendar weather now-playing
+modules-right = cpu memory volume dsbattery xkeyboard wired-network wireless-network powermenu
 
 tray-position = right
 tray-padding = 2
@@ -110,22 +112,26 @@ label-separator = 𠘻
 ### меню #######
 menu-0-0 = 
 menu-0-0-exec = krita
-menu-0-1 = 
+menu-0-1 = 󰢷
 menu-0-1-exec = minecraft-launcher
-menu-0-2 = 
-menu-0-2-exec = lxappearance
-menu-0-3 = 
-menu-0-3-exec = kate
-menu-0-4 = 
-menu-0-4-exec = blueman-manager
-menu-0-5 = 
-menu-0-5-exec = nm-connection-editor
-menu-0-6 = 
-menu-0-6-exec = gnome-disks
-menu-0-7 = 
-menu-0-7-exec = plasma-systemmonitor
-menu-0-8 = 
-menu-0-8-exec = pavucontrol
+menu-0-2 = 
+menu-0-2-exec = guvcview
+menu-0-3 = 
+menu-0-3-exec = lxappearance
+menu-0-4 = 
+menu-0-4-exec = shotcut
+menu-0-5 = 
+menu-0-5-exec = kate
+menu-0-6 = 
+menu-0-6-exec = blueman-manager
+menu-0-7 = 
+menu-0-7-exec = nm-connection-editor
+menu-0-8 = 
+menu-0-8-exec = gnome-disks
+menu-0-9 = 
+menu-0-9-exec = plasma-systemmonitor
+menu-0-10 = 
+menu-0-10-exec = pavucontrol
 
 #Модуль календарь
 [module/popup-calendar]
@@ -145,6 +151,150 @@ label = %{F#00ff00}%title:0:50:...%
 label-empty = Empty
 label-empty-foreground = #888888
 
+#Проводная сеть
+[module/wired-network]
+type = internal/network
+interface = enp10s0
+# Seconds to sleep between updates
+# Default: 1
+interval = 3.0
+# Test connectivity every Nth update
+# A value of 0 disables the feature
+# Default: 0
+#ping-interval = 3
+
+# Minimum output width of upload/download rate
+# Default: 3
+udspeed-minwidth = 5
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <ramp-signal> <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected = %linkspeed%
+label-connected-foreground = #eefafafa
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected = Нет подключения
+label-disconnected-foreground = #66ffffff
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %linkspeed% [wired]
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 󰲝
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
+#Беспроводная сеть
+[module/wireless-network]
+type = internal/network
+interface = wlp6s0
+# Seconds to sleep between updates
+# Default: 1
+interval = 3.0
+# Test connectivity every Nth update
+# A value of 0 disables the feature
+# Default: 0
+#ping-interval = 3
+
+# Minimum output width of upload/download rate
+# Default: 3
+udspeed-minwidth = 5
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <ramp-signal> <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected = %essid% %signal%
+label-connected-foreground = #eefafafa
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected = 󰤮
+label-disconnected-foreground = #66ffffff
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %linkspeed% [wired]
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 󰤫
+ramp-signal-1 = 󰤯
+ramp-signal-2 = 󰤟
+ramp-signal-3 = 󰤢
+ramp-signal-4 = 󰤥
+ramp-signal-5 = 󰤨
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
 
 [module/speedtest]
 type = custom/script
@@ -160,20 +310,33 @@ label-font = 3
 
 [module/updates]
 type = custom/script
-exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh 
+exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
 interval = 600
 
-[module/usdrub]
-type = custom/script
-exec = LC_NUMERIC="en_US.UTF-8" printf " %.2f\n" $(curl -s rub.rate.sx/1USD)
-interval = 6
+#[module/usdrub]
+#type = custom/script
+#exec = LC_NUMERIC="en_US.UTF-8" printf " %.2f\n" $(curl -s rub.rate.sx/1USD)
+#interval = 6
 
-#Модуль, который показывает уровень заряда подключенного геймпада (для того,чтобы узнать id необходимо прописать upower -d, и вставить нужное вместо "gaming_input_ps_controller_battery_a0oabo51o89o94o65"
+#Модуль, который показывает уровень заряда подключенного геймпада (для того,чтобы узнать id необходимо прописать upower -d, и вставить нужное вместо "gaming_input_ps_controller_battery_a0oabo51o89o94o65")
 [module/dsbattery]
 type = custom/script
 exec = echo $(upower -i /org/freedesktop/UPower/devices/gaming_input_ps_controller_battery_a0oabo51o89o94o65 | awk '/percent/ && !/0%/ {print" ᠌ ᠌"$2}')
 interval = 1
 label = %output%
+
+#Модуль, отображающий температуру gpu
+[module/gputemp]
+type = custom/script
+exec = echo $(nvidia-settings -q gpucoretemp | awk '/gpu/ && !/0%/ {print"󰄉 ᠌"$4}') | head -c-2
+interval = 1
+label = %output%
+
+#Модуль, который показывает информацию о сети
+[module/online]
+type = custom/script
+exec = python ~/.config/polybar/scripts/polybar-online/polybar_online/main.py --notify -ci 5
+tail = true
 
 [module/cava]
 type = custom/script
@@ -419,10 +582,10 @@ label-foreground = ${colors.foreground}
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1:  Монитор" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:     Наушники" listen
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --node-nicknames-from "device.description" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1:  Монитор" --node-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:     Наушники" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
-click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-node
 scroll-up = pulseaudio-control --volume-max 130 up
 scroll-down = pulseaudio-control --volume-max 130 down
 
@@ -485,7 +648,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open =  
+label-open = 
 label-open-foreground = ${colors.secondary}
 label-close =   Отмена
 label-close-foreground = ${colors.secondary}
@@ -515,3 +678,4 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+#Footer
