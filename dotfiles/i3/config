@@ -3,9 +3,9 @@
 #
 #           ██╗
 #           ╚═╝█████╗██╗     ██╗██╗     ██╗
-#           ██╗╚══██║██║     ██║████╗ ████║
+#           ██╗   ██║██║     ██║████╗ ████║
 #           ██║ ████║██║ ██╗ ██║██║ ██╔═██║
-#           ██║ ╚═██║████║ ████║██║ ╚═╝ ██║
+#           ██║   ██║████║ ████║██║ ╚═╝ ██║
 #           ██║█████║██╔═╝   ██║██║     ██║
 #           ╚═╝╚════╝╚═╝     ╚═╝╚═╝     ╚═╝
 #
@@ -198,7 +198,7 @@ client.unfocused 	         #2f343a #0b2d18 #888888 #0b2d18   #0b2d18
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -theme fancy -font "Hack Nerd 12" -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
