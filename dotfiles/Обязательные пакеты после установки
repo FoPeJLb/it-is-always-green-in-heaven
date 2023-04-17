@@ -9,9 +9,12 @@ sudo pikaur -Syu
 sudo pikaur -S make automake gcc i3-wm discord steam qutebrowser kate stacer kdenlive polybar dunst pcmanfm pulseaudio blueman breeze-default-cursor-theme
 baobab sbxkb nitrogen sxhkd imwheel udiskie telegram dmenu htop lxappearance qbittorrent gamemode sakura lib32-gamemode lib32-nvidia-utils nvidia-settings
 vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc minecraft-launcher piper nm-connection-editor
-krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring cava
+krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring cava zsh
 sudo systemctl enable pulseaudio && sudo systemctl start pulseaudio
 sudo systemctl enable bluetooth && sudo systemctl start bluetooth
+
+Установка OhMyZsh! для zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
 Шрифты:
 ttf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-ms-fonts noto-fonts-extra ttf-liberation ttf-dejavu ttf-droid ttf-ubuntu-font-family
