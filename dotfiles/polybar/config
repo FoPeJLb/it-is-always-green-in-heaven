@@ -29,7 +29,7 @@ alert = ${xrdb:color1}
 transparent = #0b2d18
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -61,12 +61,12 @@ font-2 = Weather Icons:size=7;2
 font-3 = FontAwesome5Brands:style=Solid:size=7.5;2.5
 font-4 = Material Icons:style=Solid:size=7.5;2.5
 
-modules-left = bspwm i3 menu updates title
-modules-center = cava popup-calendar weather now-playing
-modules-right = cpu memory volume dsbattery xkeyboard wired-network wireless-network powermenu
+modules-left = i3 menu updates title
+modules-center = popup-calendar weather
+modules-right = volume dsbattery wired-network wireless-network cpu cputemp memory gputemp xkeyboard powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 5
 tray-detached = false
 ;tray-background = #0063ff
 
@@ -147,8 +147,8 @@ format = <label>
 format-background = #0b2d18
 format-foreground = #000
 format-padding = 4
-label = %{F#00ff00}%title:0:50:...%
-label-empty = Empty
+label = %{F#00ff00}%title:0:20:...%
+label-empty = Пусто
 label-empty-foreground = #888888
 
 #Проводная сеть
@@ -211,7 +211,7 @@ label-disconnected-foreground = #66ffffff
 ;label-packetloss-foreground = #eefafafa
 
 ; Only applies if <ramp-signal> is used
-ramp-signal-0 = 󰲝
+ramp-signal-0 = 󰈀
 
 ; Only applies if <animation-packetloss> is used
 animation-packetloss-0 = ⚠
@@ -308,6 +308,18 @@ exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
 interval = 600
 label-font = 3
 
+#Температура CPU
+[module/cputemp]
+type = custom/script
+exec = sensors | grep "Package id 0:" | tr -d '+' | awk '{print "󰍛 "$4}'
+interval = 30
+
+#Температура GPU
+[module/gputemp]
+type = custom/script
+exec = sensors | grep "Composite:" | tr -d '+' | awk '{print "󰢮 "$2}'
+interval = 30
+
 [module/updates]
 type = custom/script
 exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
@@ -318,19 +330,11 @@ interval = 600
 #exec = LC_NUMERIC="en_US.UTF-8" printf " %.2f\n" $(curl -s rub.rate.sx/1USD)
 #interval = 6
 
-#Модуль, который показывает уровень заряда подключенного геймпада (для того,чтобы узнать id необходимо прописать upower -d, и вставить нужное вместо "gaming_input_ps_controller_battery_a0oabo51o89o94o65")
+#Модуль, который показывает уровень заряда подключенного геймпада (для того,чтобы узнать id необходимо прописать upower -d, и вставить нужное вместо "ps-controller-battery-a0:ab:51:89:94:65" из строки "native-path")
 [module/dsbattery]
 type = custom/script
-exec = echo $(upower -i /org/freedesktop/UPower/devices/gaming_input_ps_controller_battery_a0oabo51o89o94o65 | awk '/percent/ && !/0%/ {print" ᠌ ᠌"$2}')
-interval = 1
-label = %output%
-
-#Модуль, отображающий температуру gpu
-[module/gputemp]
-type = custom/script
-exec = echo $(nvidia-settings -q gpucoretemp | awk '/gpu/ && !/0%/ {print"󰄉 ᠌"$4}') | head -c-2
-interval = 1
-label = %output%
+exec = cat /sys/class/power_supply/ps-controller-battery-a0:ab:51:89:94:65/capacity | awk '{print"  "$0"%"}'
+interval = 30
 
 #Модуль, который показывает информацию о сети
 [module/online]
@@ -472,21 +476,23 @@ inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 
+#󰝋 󰝌 󰝎 󰝏 󰝍
+
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
-label =  %percentage:2%%
+label = 󰍛 %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label =  %percentage_used%%
+label = 󰘚 %percentage_used%%
 
 [module/wlan]
 type = internal/network
