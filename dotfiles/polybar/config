@@ -330,11 +330,12 @@ interval = 600
 #exec = LC_NUMERIC="en_US.UTF-8" printf " %.2f\n" $(curl -s rub.rate.sx/1USD)
 #interval = 6
 
+#󰝋 󰝌 󰝎 󰝏 󰝍
 #Модуль, который показывает уровень заряда подключенного геймпада (для того,чтобы узнать id необходимо прописать upower -d, и вставить нужное вместо "ps-controller-battery-a0:ab:51:89:94:65" из строки "native-path")
 [module/dsbattery]
 type = custom/script
-exec = cat /sys/class/power_supply/ps-controller-battery-a0:ab:51:89:94:65/capacity | awk '{print"  "$0"%"}'
-interval = 30
+exec = ~/.config/polybar/scripts/dsbattery.sh
+interval = 1
 
 #Модуль, который показывает информацию о сети
 [module/online]
@@ -475,8 +476,6 @@ bar-empty-foreground = ${colors.foreground-alt}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
-
-#󰝋 󰝌 󰝎 󰝏 󰝍
 
 [module/cpu]
 type = internal/cpu
