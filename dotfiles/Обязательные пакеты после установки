@@ -6,7 +6,7 @@ git clone https://aur.archlinux.org/pikaur.git
 cd pikaur/
 makepkg -sri
 sudo pikaur -Syu
-sudo pikaur -S make automake gcc i3-wm discord steam qutebrowser kate stacer kdenlive polybar dunst pcmanfm pulseaudio blueman breeze-default-cursor-theme
+sudo pikaur -S make automake gcc pacman-contrib i3-wm discord steam qutebrowser kate stacer kdenlive polybar dunst pcmanfm pulseaudio blueman breeze-default-cursor-theme
 baobab sbxkb nitrogen sxhkd imwheel udiskie telegram dmenu htop lxappearance qbittorrent gamemode sakura lib32-gamemode lib32-nvidia-utils nvidia-settings
 vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc minecraft-launcher piper nm-connection-editor
 krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring cava zsh
