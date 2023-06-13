@@ -1,32 +1,4 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@FoPeJLb
-yutkat /
-dotfiles
-Public
-
-Code
-Issues
-Pull requests
-Discussions
-Actions
-Security
-
-    Insights
-
-dotfiles/.config/dunst/dunstrc
-@yutkat
-yutkat dunst: Update latest config
-Latest commit ae08f3b on 21 Oct 2021
-History
-1 contributor
-456 lines (379 sloc) 13.8 KB
-[global]
-    ### Display ###
+### Display ###
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
