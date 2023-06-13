@@ -3,9 +3,9 @@
 #
 #           ██╗
 #           ╚═╝█████╗██╗     ██╗██╗     ██╗
-#           ██╗   ██║██║     ██║████╗ ████║
+#           ██╗╚══██║██║     ██║████╗ ████║
 #           ██║ ████║██║ ██╗ ██║██║ ██╔═██║
-#           ██║   ██║████║ ████║██║ ╚═╝ ██║
+#           ██║ ╚═██║████║ ████║██║ ╚═╝ ██║
 #           ██║█████║██╔═╝   ██║██║     ██║
 #           ╚═╝╚════╝╚═╝     ╚═╝╚═╝     ╚═╝
 #
@@ -77,20 +77,22 @@ workspace_layout tabbed
 #Спящий режим, логаут, и тд.
 set $Locker ~/.config/i3/lockscreen.sh && sleep 1
 
-set $mode_system System [L]ock, [E]xit, [S]uspend, [H]ibernate, [R]eboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+#set $mode_system System [L]ock, [E]xit, [S]uspend, [H]ibernate, [R]eboot, (Shift+s) shutdown
+#mode "$mode_system" {
+#    bindsym l exec --no-startup-id $Locker, mode "default"
+#    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+#    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+#    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+#    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+#    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+#
+#    # back to normal: Enter or Escape
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
+#bindsym $mod+Insert mode "$mode_system"
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Insert mode "$mode_system"
+bindsym $mod+Insert exec ~/.config/rofi/powermenu/type-2/powermenu.sh
 
 #Умные рамки, когда открыто одно окно рамки отключаются
 smart_borders on
@@ -116,7 +118,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec sakura
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -133,6 +135,9 @@ exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle,grp
 
 #Picom
 #exec --no-startup-id picom --vsync &
+
+#lxpolkit (gui для запроса пароля)
+exec --no-startup-id /usr/lib/lxpolkit/lxpolkit &
 
 #Nitrogen (обои)
 exec --no-startup-id nitrogen --restore
@@ -189,21 +194,17 @@ default_border pixel
 default_floating_border pixel
 
 #Настройка цвета рамки окна и ширина рамки
-#for_window [class"^.*"] border pixel 3
+#for_window [class"^.*"] border pixel 4
 # class			              border  backgr. text	indicator child_border
 client.focused 		         #40826d #013a33 #00ff00 #00ff04   #00c001
 client.urgent 		         #333333 #40826d #00ff00 #40826d   #40826d
 client.focused_inactive      #333333 #0b2d18 #00ff00 #0b2d18   #0b2d18
 client.unfocused 	         #2f343a #0b2d18 #888888 #0b2d18   #0b2d18
 
-# start dmenu (a program launcher)
+# Запуск лаунчера программ
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id rofi -theme fancy -font "Hack Nerd 12" -show run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id rofi -theme fancy -font "Hack Nerd 12" -show run
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
 
 # change focus
 #bindsym $mod+j focus left
