@@ -42,13 +42,6 @@ xorg-fonts-cyrillic xorg-fonts-alias-cyrillic xorg-fonts-misc xorg-fonts-encodin
 sudo pacman -Rdd xdg-desktop-portal-gnome
 sudo pacman -S xdg-desktop-portal-gtk
 
-[Решение нерабочего режима systemctl suspend или неразрешённого перезапуска и выключения системы без пароля (необходимо для i3wm)]
-В файл /etc/sudoers/ добавить строки:
-username ALL= NOPASSWD: /usr/bin/systemctl suspend
-username ALL= NOPASSWD: /usr/bin/systemctl reboot
-username ALL= NOPASSWD: /usr/bin/systemctl shutdown
-username ALL= NOPASSWD: /usr/bin/systemctl hybernate
-
 [Отображение пароля в терминале в виде * при вводе]
 В файл /etc/sudoers/ добавить строку:
 Defaults pwfeedback
