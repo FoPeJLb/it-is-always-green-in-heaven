@@ -5,7 +5,7 @@ GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Arch"
 #GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=2"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 rootfstype=btrfs ibt=off lpj=10666600 raid=noautodetect mitigations=off preempt=none nowatchdog audit=0 page_alloc.shuffle=1 split_lock_detect=off pci=pcie_bus_perf"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
