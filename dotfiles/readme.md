@@ -2,11 +2,13 @@
 
 #### Включение службы fstrim (ускоряет работу с ssd)
 sudo systemctl enable fstrim.timer
+
 sudo fstrim -v /
 ##### (если не работает, то -va)
 #
 #### Даемон, который следит за энтропией системы через аппаратный таймер и ускоряет запуск системы
 sudo pacman -S rng-tools
+
 sudo systemctl enable --now rngd
 #
 #### Отключение ожидания сети NetworkManager-ом при запуске системы
@@ -14,26 +16,38 @@ sudo systemctl mask NetworkManager-wait-online.service
 #
 #### Установка инструмента pikaur для взаимодействия с aur-репозиторием
 mkdir git
+
 cd git
+
 sudo pacman -Syu
+
 sudo pacman -S git
+
 git clone https://aur.archlinux.org/pikaur.git
+
 cd pikaur/
+
 makepkg -sri
+
 cd ..
 #
 #### Reflector отсортирует доступные репозитории по скорости, выбрана страна Германия как оптимальная, можно изменить
 sudo pacman -S reflector rsync curl 
+
 sudo reflector --verbose --country 'Germany' -l 25 --sort rate --save /etc/pacman.d/mirrorlist
+
 sudo pikaur -Syu
 #
 #### dbus-broker - это реализация шины сообщений в соответствии со спецификацией D-Bus. Обеспечивает чуть более быстрое общение с видеокартой через PCIe
 sudo pacman -S dbus-broker
+
 sudo systemctl enable --now dbus-broker.service
 #
 #### Zramswap — это специальный даемон, который сжимает оперативную память ресурсами центрального процессора и создает в ней файл подкачки. Очень ускоряет систему вне зависимости от количества памяти, однако добавляет нагрузку на процессор, т.к. его ресурсами и происходит сжатие памяти. Поэтому, на слабых компьютерах с малым количеством ОЗУ, это может негативно повлиять на производительность в целом.
 sudo pikaur -S zramswap
+
 sudo systemctl enable --now zramswap.service
+
 echo "ZRAM_COMPRESSION_ALGO=zstd" | sudo tee -a /etc/zramswap.conf
 #
 #### Основной "джентельменский" набор
@@ -42,12 +56,16 @@ pcmanfm pulseaudio blueman breeze-default-cursor-theme baobab sbxkb nitrogen lxp
 sakura lib32-gamemode vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc 
 minecraft-launcher piper nm-connection-editor krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring
 cava zsh
+
 sudo systemctl enable pulseaudio && sudo systemctl start pulseaudio
+
 sudo systemctl enable bluetooth && sudo systemctl start bluetooth
 #
 #### Смена оболочки с bash на zsh
 sudo -s
+
 chsh -s /bin/zsh root
+
 chsh -s /bin/zsh username
 #
 #### Установка OhMyZsh! для zsh
@@ -55,8 +73,11 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 #
 #### Установка тем для rofi:
 git clone https://github.com/orkhasnat/rofi-themes
+
 cd rofi-themes
+
 chmod +x setup.sh
+
 ./setup.sh
 #
 #### Шрифты:
@@ -77,9 +98,11 @@ gnome-robots gnome-sudoku gnome-tetravex gnome-text-editor
 # Extras:
 #### [Решение долгого открытия приложений]
 sudo pacman -Rdd xdg-desktop-portal-gnome
+
 sudo pacman -S xdg-desktop-portal-gtk
 #
 #### [Отображение пароля в терминале в виде * при вводе]
 В файл /etc/sudoers/ добавить строку:
+
 Defaults pwfeedback
 #
