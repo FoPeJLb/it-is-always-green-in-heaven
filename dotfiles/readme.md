@@ -1,3 +1,4 @@
+Обязательные действия после установки
 Включение службы fstrim (ускоряет работу с ssd)
 sudo systemctl enable fstrim.timer
 sudo fstrim -v /      (если не работает, то -va)
