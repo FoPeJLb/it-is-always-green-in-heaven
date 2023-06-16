@@ -51,7 +51,7 @@ sudo systemctl enable --now zramswap.service
 echo "ZRAM_COMPRESSION_ALGO=zstd" | sudo tee -a /etc/zramswap.conf
 #
 #### Основной "джентельменский" набор
-sudo pikaur -S make automake gcc jq pacman-contrib gvim gvfs gvfs-mtp i3-wm rofi zsh-autosuggestions-git pulseaudio-control discord steam firefox kate lrzip unrar unzip unace p7zip squashfs-tools stacer kdenlive polybar dunstpcmanfm pulseaudio blueman breeze-default-cursor-theme baobab sbxkb nitrogen lxpolkit-git sxhkd imwheel udiskie telegram dmenu htop lxappearance qbittorrent gamemode sakura lib32-gamemode vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc minecraft-launcher piper nm-connection-editor krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring cava zsh
+sudo pikaur -S make automake acpi gcc jq pacman-contrib maim i3lock qalculate-gtk xclip wps-office gvim gvfs gvfs-mtp i3-wm rofi zsh-autosuggestions-git pulseaudio-control discord steam firefox kate lrzip unrar unzip unace p7zip squashfs-tools stacer kdenlive polybar dunstpcmanfm pulseaudio blueman breeze-default-cursor-theme baobab sbxkb nitrogen lxpolkit-git sxhkd imwheel udiskie telegram dmenu htop lxappearance qbittorrent gamemode sakura lib32-gamemode vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc minecraft-launcher piper nm-connection-editor krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring cava zsh
 
 sudo systemctl enable pulseaudio && sudo systemctl start pulseaudio
 
