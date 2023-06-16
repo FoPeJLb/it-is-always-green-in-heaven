@@ -342,4 +342,4 @@ bindsym $mod+r mode "resize"
 #}
 
 #Polybar
-exec_always --no-startup-id /home/vpan/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
