@@ -51,11 +51,7 @@ sudo systemctl enable --now zramswap.service
 echo "ZRAM_COMPRESSION_ALGO=zstd" | sudo tee -a /etc/zramswap.conf
 #
 #### Основной "джентельменский" набор
-sudo pikaur -S make automake gcc pacman-contrib gvim gvfs gvfs-mtp i3-wm discord steam firefox kate lrzip unrar unzip unace p7zip squashfs-tools stacer kdenlive polybar dunst
-pcmanfm pulseaudio blueman breeze-default-cursor-theme baobab sbxkb nitrogen lxpolkit-git sxhkd imwheel udiskie telegram dmenu htop lxappearance qbittorrent gamemode
-sakura lib32-gamemode vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc 
-minecraft-launcher piper nm-connection-editor krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring
-cava zsh
+sudo pikaur -S make automake gcc jq pacman-contrib gvim gvfs gvfs-mtp i3-wm rofi zsh-autosuggestions-git pulseaudio-control discord steam firefox kate lrzip unrar unzip unace p7zip squashfs-tools stacer kdenlive polybar dunstpcmanfm pulseaudio blueman breeze-default-cursor-theme baobab sbxkb nitrogen lxpolkit-git sxhkd imwheel udiskie telegram dmenu htop lxappearance qbittorrent gamemode sakura lib32-gamemode vulkan-tools lib32-openssl-1.0-hardened lib32-openal bluez-utils neofetch gtk gtk3 gnome gnome-extra vlc minecraft-launcher piper nm-connection-editor krita plasma-systemmonitor pavucontrol ntfs-3g yad xdotool piscesys-gtk-themes-git python3 playerctl dbus-python mailspring cava zsh
 
 sudo systemctl enable pulseaudio && sudo systemctl start pulseaudio
 
@@ -81,19 +77,10 @@ chmod +x setup.sh
 ./setup.sh
 #
 #### Шрифты:
-ttf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-ms-fonts noto-fonts-extra ttf-liberation ttf-dejavu ttf-droid ttf-ubuntu-font-family
-ttf-hack-nerd ttf-iosevka-nerd adobe-source-serif-fonts adobe-source-han-serif-tw-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-kr-fonts
-adobe-source-han-serif-jp-fonts adobe-source-han-serif-hk-fonts adobe-source-han-serif-cn-fonts adobe-source-sans-fonts adobe-source-han-sans-tw-fonts
-adobe-source-han-sans-otc-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-cn-fonts
-adobe-source-code-pro-fonts ttf-cascadia-code otf-cascadia-code ttf-nerd-fonts-symbols-common wqy-zenhei freetype2 xorg-mkfontscale xorg-fonts-alias-misc
-xorg-fonts-cyrillic xorg-fonts-alias-cyrillic xorg-fonts-misc xorg-fonts-encodings
+ttf-font-awesome ttf-weather-icons ttf-material-design-icons noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-ms-fonts noto-fonts-extra ttf-liberation ttf-dejavu ttf-droid ttf-ubuntu-font-family ttf-hack-nerd ttf-iosevka-nerd adobe-source-serif-fonts adobe-source-han-serif-tw-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-hk-fonts adobe-source-han-serif-cn-fonts adobe-source-sans-fonts adobe-source-han-sans-tw-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-cn-fonts adobe-source-code-pro-fonts ttf-cascadia-code otf-cascadia-code ttf-nerd-fonts-symbols-common wqy-zenhei freetype2 xorg-mkfontscale xorg-fonts-alias-misc xorg-fonts-cyrillic xorg-fonts-alias-cyrillic xorg-fonts-misc xorg-fonts-encodings
 #
 #### Удаление мусора GNOME:
-sudo pacman -Rsn epiphany gnome-boxes gnome-calculator gnome-calendar gnome-contacts gnome-maps gnome-music gnome-weather gnome-clocks gnome-photos 
-gnome-software gnome-user-docs totem yelp gnome-user-share gnome-characters simple-scan eog tracker3-miners rygel evolution-data-server gnome-font-viewer
-gnome-remote-desktop gnome-logs orca malcontent gvfs-afc gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvfs-google evolution gnome-notes gnome-devel-docs
-endeavour folks geary gnome-chess gnome-dictionary gnome-2048 gnome-games gnome-builder gnome-klotski gnome-mahjongg gnome-nibbles gnome-recipes gnome-mines 
-gnome-robots gnome-sudoku gnome-tetravex gnome-text-editor
+sudo pacman -Rsn epiphany gnome-boxes gnome-calculator gnome-calendar gnome-contacts gnome-maps gnome-music gnome-weather gnome-clocks gnome-photos gnome-software gnome-user-docs totem yelp gnome-user-share gnome-characters simple-scan eog tracker3-miners rygel evolution-data-server gnome-font-viewer gnome-remote-desktop gnome-logs orca malcontent gvfs-afc gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvfs-google evolution gnome-notes gnome-devel-docs endeavour folks geary gnome-chess gnome-dictionary gnome-2048 gnome-games gnome-builder gnome-klotski gnome-mahjongg gnome-nibbles gnome-recipes gnome-mines gnome-robots gnome-sudoku gnome-tetravex gnome-text-editor
 #
 # Extras:
 #### [Решение долгого открытия приложений]
@@ -106,3 +93,7 @@ sudo pacman -S xdg-desktop-portal-gtk
 
 Defaults pwfeedback
 #
+#### [Решение ошибки Missing libc.so.6 library]
+pacman -Fy libc.so.6
+
+sudo pacman -S lib32-glibc
