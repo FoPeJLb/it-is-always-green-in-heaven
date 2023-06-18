@@ -97,3 +97,10 @@ Defaults pwfeedback
 pacman -Fy libc.so.6
 
 sudo pacman -S lib32-glibc
+#
+#### [Решение нерабочего systemctl suspend/hybernate/reboot/shutdown (для i3wm)]
+sudo pikaur -S xfce4-power-manager
+
+##### В конфиг i3wm добавить:
+
+exec_always --no-startup-id xfce4-power-manager
