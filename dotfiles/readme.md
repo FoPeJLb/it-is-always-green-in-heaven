@@ -82,6 +82,7 @@ ttf-font-awesome ttf-weather-icons ttf-material-design-icons noto-fonts noto-fon
 #### Удаление мусора GNOME:
 sudo pacman -Rsn epiphany gnome-boxes gnome-calculator gnome-calendar gnome-contacts gnome-maps gnome-music gnome-weather gnome-clocks gnome-photos gnome-software gnome-user-docs totem yelp gnome-user-share gnome-characters simple-scan eog tracker3-miners rygel evolution-data-server gnome-font-viewer gnome-remote-desktop gnome-logs orca malcontent gvfs-afc gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvfs-google evolution gnome-notes gnome-devel-docs endeavour folks geary gnome-chess gnome-dictionary gnome-2048 gnome-games gnome-builder gnome-klotski gnome-mahjongg gnome-nibbles gnome-recipes gnome-mines gnome-robots gnome-sudoku gnome-tetravex gnome-text-editor
 #
+
 # Extras:
 #### [Решение долгого открытия приложений]
 sudo pacman -Rdd xdg-desktop-portal-gnome
